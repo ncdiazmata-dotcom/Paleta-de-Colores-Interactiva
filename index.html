@@ -5,18 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paleta de Colores Interactiva</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" > 
 </head>
-<body>
 
-    <div class="container">
-        <h1>Generador de Colores</h1>
-        <p>Haz clic en cualquier color para copiar el código HEX</p>
+<body>
+    <header class="app-header">
+    <div class="logo-container">
+
+        <div class="colorfly-logo" aria-hidden="true">
+            <span class="wing left-wing"></span>
+            <span class="wing right-wing"></span>
+            <span class="body-core"></span>
+        </div>
+        <div class="brand-text">
+            <h1>Colorfly <span>Studio</span></h1>
+            <p class="brand-subtitle">Branding & Visual Systems</p>
+        </div>
+    </div>
+    <p class="app-description">Herramienta interna de generación y estandarización cromática para propuestas creativas corporativas.</p>
+    </header>
+
+    <main class="app-container">
+        <!-- Panel de Control -->
+        <section class="controls-panel" aria-label="Controles de la paleta">
+            <!-- Botón elegante para presentar a clientes -->
+             <button id="btn-presentation" class="btn btn-presentation">
+    <i class="fa-solid fa-expand"></i> Vista de Presentación
+</button>
+            <div class="control-group">
+                <label for="palette-size">Tamaño:</label>
+                <select id="palette-size" class="custom-select">
+                    <option value="6" selected>6 Colores</option>
+                    <option value="8">8 Colores</option>
+                    <option value="9">9 Colores</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="color-format">Formato:</label>
+                <select id="color-format" class="custom-select">
+                    <option value="hex" selected>HEX</option>
+                    <option value="hsl">HSL</option>
+                </select>
+            </div>
+
+            <button id="btn-generate" class="btn btn-primary">
+                <!-- Botón elegante para presentar a clientes -->
+            </button>
+            <button  class="btn btn-presentation">
+            <i class="fa-solid fa-expand"></i> Vista de Presentación
+            </button>
+        </section>
         
-        
+
+        <div class="container">
+        <p id="copy-instruction" class="instruction-text">
+          Haz clic en cualquier color para copiar el código HEX
+        </p>
+        <section class="palette-display" aria-label="Colores generados">
+            <div id="palette-grid" class="palette-grid cols-6"></div>
+        </section>
+
+        <!-- Galería de Paletas Guardadas (Extra Credit) -->
+        <section class="saved-section" aria-label="Paletas guardadas">
+            <h2>Tus Paletas Guardadas</h2>
+            <div id="saved-container" class="saved-container">
+                <p class="empty-state">No tienes paletas guardadas todavía.</p>
+            </div>
+        </section>
+        <section class="history-section" aria-label="Historial de paletas recientes">
+            <h2>Paletas Recientes (Historial)</h2>
+            <div id="history-container" class="saved-container">
+                <p class="empty-state">Tus  Paletas </p>
+            </div>
+        </section>
+
+            <button id="btn-save" class="btn btn-secondary">
+                Guardar Paleta
+            </button>
+
         <div id="palette" class="palette-container"></div>
 
         <button id="generate-btn">Generar Nueva Paleta</button>
-    </div>
+        <button id="btn-share-native" class="btn btn-share">
+          <i class="fa-solid fa-share-nodes"></i> Compartir Paleta
+        </button>
+        </div>
+    </main>
 <script src="script.js"></script>
+
+<footer class="app-footer">
+    <div class="footer-content">
+        <p class="footer-credits">Desarrollado para el flujo creativo de Colorfly Studio</p>
+        
+
+        <div class="author-info">
+            <span class="author-name">Neidy Diaz</span>
+            <div class="author-links">
+                <a href="mailto:ncdiazmata@gmail.com" class="footer-link" target="_blank" rel="noopener noreferrer" title="Enviar correo electrónico">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> ncdiazmata@gmail.com
+                </a>
+                <a href="https://github.com/ncdiazmata-dotcom" class="footer-link" target="_blank" rel="noopener noreferrer" title="Visitar perfil de GitHub">
+                    <i class="fa-brands fa-github" aria-hidden="true"></i> ncdiazmata-dotcom
+                </a>
+            </div>
+        </div>
+        
+        <p class="copyright"> &copy; 2026 Colorfly Studio. Todos los derechos reservados.</p>
+    </div> 
+</footer>
 </body>
     </html>
