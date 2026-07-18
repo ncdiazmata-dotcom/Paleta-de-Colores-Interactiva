@@ -1,37 +1,33 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paleta de Colores Interactiva</title>
+    <title>Colorfly Studio | Paleta de Colores Interactiva</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" > 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <header class="app-header">
-    <div class="logo-container">
 
-        <div class="colorfly-logo" aria-hidden="true">
-            <span class="wing left-wing"></span>
-            <span class="wing right-wing"></span>
-            <span class="body-core"></span>
+    <header class="app-header">
+        <div class="container header-flex">
+            <div class="logo-container">
+                <div class="colorfly-logo" aria-hidden="true">
+                    <span class="wing left-wing"></span>
+                    <span class="wing right-wing"></span>
+                    <span class="body-core"></span>
+                </div>
+                <div class="brand-text">
+                    <h1>Colorfly <span>Studio</span></h1>
+                    <p class="brand-subtitle">Branding & Visual Systems</p>
+                </div>
+            </div>
+            <p class="app-description">Herramienta interna de generación y estandarización cromática para propuestas creativas corporativas.</p>
         </div>
-        <div class="brand-text">
-            <h1>Colorfly <span>Studio</span></h1>
-            <p class="brand-subtitle">Branding & Visual Systems</p>
-        </div>
-    </div>
-    <p class="app-description">Herramienta interna de generación y estandarización cromática para propuestas creativas corporativas.</p>
     </header>
 
     <main class="app-container">
         <!-- Panel de Control -->
         <section class="controls-panel" aria-label="Controles de la paleta">
-            <!-- Botón elegante para presentar a clientes -->
-             <button id="btn-presentation" class="btn btn-presentation">
-    <i class="fa-solid fa-expand"></i> Vista de Presentación
-</button>
             <div class="control-group">
                 <label for="palette-size">Tamaño:</label>
                 <select id="palette-size" class="custom-select">
@@ -49,70 +45,215 @@
                 </select>
             </div>
 
-            <button id="btn-generate" class="btn btn-primary">
-                <!-- Botón elegante para presentar a clientes -->
-            </button>
-            <button  class="btn btn-presentation">
-            <i class="fa-solid fa-expand"></i> Vista de Presentación
-            </button>
-        </section>
-        
-
-        <div class="container">
-        <p id="copy-instruction" class="instruction-text">
-          Haz clic en cualquier color para copiar el código HEX
-        </p>
-        <section class="palette-display" aria-label="Colores generados">
-            <div id="palette-grid" class="palette-grid cols-6"></div>
-        </section>
-
-        <!-- Galería de Paletas Guardadas (Extra Credit) -->
-        <section class="saved-section" aria-label="Paletas guardadas">
-            <h2>Tus Paletas Guardadas</h2>
-            <div id="saved-container" class="saved-container">
-                <p class="empty-state">No tienes paletas guardadas todavía.</p>
-            </div>
-        </section>
-        <section class="history-section" aria-label="Historial de paletas recientes">
-            <h2>Paletas Recientes (Historial)</h2>
-            <div id="history-container" class="saved-container">
-                <p class="empty-state">Tus  Paletas </p>
+            <div class="button-actions">
+                <button id="btn-generate" class="btn btn-primary">
+                    <i class="fa-solid fa-rotate"></i> Generar Paleta
+                </button>
+                <button id="btn-save" class="btn btn-secondary">
+                    <i class="fa-solid fa-bookmark"></i> Guardar Paleta
+                </button>
+                <button id="btn-presentation" class="btn btn-presentation">
+                    <i class="fa-solid fa-expand"></i> Vista Presentación
+                </button>
+                <button id="btn-share-native" class="btn btn-share">
+                    <i class="fa-solid fa-share-nodes"></i> Compartir Paleta
+                </button>
             </div>
         </section>
 
-            <button id="btn-save" class="btn btn-secondary">
-                Guardar Paleta
-            </button>
+        <div class="container main-content">
+            <p id="copy-instruction" class="instruction-text">
+                Haz clic en el código del color para copiarlo al portapapeles. Presiona <strong>Espacio</strong> para generar variantes.
+            </p>
+            
+            <!-- Contenedor Principal de la Paleta -->
+            <section class="palette-display" aria-label="Colores generados">
+                <div id="palette-grid" class="palette-grid cols-6"></div>
+            </section>
 
-        <div id="palette" class="palette-container"></div>
+            <!-- Galería de Paletas Guardadas -->
+            <section class="saved-section" aria-label="Paletas guardadas">
+                <h2>Tus Paletas Guardadas</h2>
+                <div id="saved-container" class="saved-container">
+                    <p class="empty-state">No tienes paletas guardadas todavía.</p>
+                </div>
+            </section>
 
-        <button id="generate-btn">Generar Nueva Paleta</button>
-        <button id="btn-share-native" class="btn btn-share">
-          <i class="fa-solid fa-share-nodes"></i> Compartir Paleta
-        </button>
+            <!-- Historial de Paletas Recientes -->
+            <section class="history-section" aria-label="Historial de paletas recientes">
+                <h2>Paletas Recientes (Historial)</h2>
+                <div id="history-container" class="saved-container">
+                    <p class="empty-state">No hay historial de paletas recientes.</p>
+                </div>
+            </section>
         </div>
     </main>
-<script src="script.js"></script>
 
-<footer class="app-footer">
-    <div class="footer-content">
-        <p class="footer-credits">Desarrollado para el flujo creativo de Colorfly Studio</p>
-        
-
-        <div class="author-info">
-            <span class="author-name">Neidy Diaz</span>
-            <div class="author-links">
-                <a href="mailto:ncdiazmata@gmail.com" class="footer-link" target="_blank" rel="noopener noreferrer" title="Enviar correo electrónico">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> ncdiazmata@gmail.com
-                </a>
-                <a href="https://github.com/ncdiazmata-dotcom" class="footer-link" target="_blank" rel="noopener noreferrer" title="Visitar perfil de GitHub">
-                    <i class="fa-brands fa-github" aria-hidden="true"></i> ncdiazmata-dotcom
-                </a>
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p class="footer-credits">Desarrollado para el flujo creativo de Colorfly Studio</p>
+            <div class="author-info">
+                <span class="author-name">Neidy Diaz</span>
+                <div class="author-links">
+                    <a href="mailto:ncdiazmata@gmail.com" class="footer-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-envelope"></i> ncdiazmata@gmail.com
+                    </a>
+                    <a href="https://github.com/ncdiazmata-dotcom" class="footer-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i> ncdiazmata-dotcom
+                    </a>
+                </div>
             </div>
-        </div>
-        
-        <p class="copyright"> &copy; 2026 Colorfly Studio. Todos los derechos reservados.</p>
-    </div> 
-</footer>
+            <p class="copyright">&copy; 2026 Colorfly Studio. Todos los derechos reservados.</p>
+        </div> 
+    </footer>
+
+    <!-- LÓGICA INTERACTIVA DE LA APP -->
+    <script>
+        let currentColors = [];
+        const paletteGrid = document.getElementById('palette-grid');
+        const sizeSelect = document.getElementById('palette-size');
+        const formatSelect = document.getElementById('color-format');
+
+        // 1. Generar Color Aleatorio en HEX
+        function generateRandomHex() {
+            const chars = '0123456789abcdef';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += chars[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Conversión básica HEX a HSL para cuando el usuario cambie el formato
+        function hexToHsl(hex) {
+            let r = parseInt(hex.slice(1, 3), 16) / 255;
+            let g = parseInt(hex.slice(3, 5), 16) / 255;
+            let b = parseInt(hex.slice(5, 7), 16) / 255;
+            let max = Math.max(r, g, b), min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0;
+            } else {
+                let d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+            return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+        }
+
+        // 2. Inicializar o renderizar paleta
+        function renderPalette(loadFromURL = false) {
+            const numColors = parseInt(sizeSelect.value);
+            paletteGrid.className = `palette-grid cols-${numColors}`;
+            
+            let urlColors = [];
+            if (loadFromURL) {
+                const params = new URLSearchParams(window.location.search);
+                const colorsParam = params.get('colors');
+                if (colorsParam) urlColors = colorsParam.split('-');
+            }
+
+            const newColors = [];
+
+            for (let i = 0; i < numColors; i++) {
+                // Mantener si estaba bloqueado, cargar de URL, o generar uno nuevo
+                let hex = generateRandomHex();
+                let isLocked = false;
+
+                if (currentColors[i] && currentColors[i].isLocked) {
+                    hex = currentColors[i].hex;
+                    isLocked = true;
+                } else if (urlColors[i]) {
+                    hex = '#' + urlColors[i];
+                }
+
+                newColors.push({ hex, isLocked });
+            }
+
+            currentColors = newColors;
+            paletteGrid.innerHTML = '';
+
+            currentColors.forEach((color, index) => {
+                const card = document.createElement('div');
+                card.className = 'color-card';
+                card.style.backgroundColor = color.hex;
+                
+                const displayCode = formatSelect.value === 'hex' ? color.hex.toUpperCase() : hexToHsl(color.hex);
+
+                card.innerHTML = `
+                    <div class="color-card-info">
+                        <span class="color-code" onclick="copyText('${displayCode}')">${displayCode}</span>
+                        <button class="lock-btn ${color.isLocked ? 'locked' : ''}" onclick="toggleLock(${index}, this)">
+                            <i class="fa-solid ${color.isLocked ? 'fa-lock' : 'fa-lock-open'}"></i>
+                        </button>
+                    </div>
+                `;
+                paletteGrid.appendChild(card);
+            });
+
+            updateURL();
+        }
+
+        // 3. Alternar bloqueo
+        window.toggleLock = function(index, button) {
+            currentColors[index].isLocked = !currentColors[index].isLocked;
+            const icon = button.querySelector('i');
+            if (currentColors[index].isLocked) {
+                button.classList.add('locked');
+                icon.className = 'fa-solid fa-lock';
+            } else {
+                button.classList.remove('locked');
+                icon.className = 'fa-solid fa-lock-open';
+            }
+            updateURL();
+        };
+
+        // 4. Copiar al Portapapeles
+        window.copyText = function(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`¡Copiado: ${text}!`);
+            });
+        };
+
+        // 5. Sincronizar URL del Navegador para Clientes
+        function updateURL() {
+            const hexSequence = currentColors.map(c => c.hex.replace('#', '')).join('-');
+            const newUrl = `${window.location.origin}${window.location.pathname}?colors=${hexSequence}`;
+            window.history.replaceState(null, '', newUrl);
+        }
+
+        // 6. Funcionalidades Complementarias (Guardado y Compartido)
+        document.getElementById('btn-generate').addEventListener('click', () => renderPalette(false));
+        sizeSelect.addEventListener('change', () => renderPalette(false));
+        formatSelect.addEventListener('change', () => renderPalette(false));
+
+        document.getElementById('btn-share-native').addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('¡Enlace de paleta copiado! Envíaselo a tus clientes.');
+            });
+        });
+
+        document.getElementById('btn-presentation').addEventListener('click', () => {
+            document.body.classList.toggle('presentation-mode');
+            alert('Modo presentación alternado (Oculta interfaces secundarias)');
+        });
+
+        // Detectar Barra Espaciadora
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                renderPalette(false);
+            }
+        });
+
+        // Carga inicial leyendo parámetros compartidos de la URL
+        window.onload = () => renderPalette(true);
+    </script>
 </body>
-    </html>
+</html>
