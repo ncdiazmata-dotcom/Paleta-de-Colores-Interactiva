@@ -87,14 +87,26 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '<i class="fa-solid fa-compress"></i> SALIR' 
             : '<i class="fa-solid fa-expand"></i> PRESENTACIÓN';
 
-        // Lanzar recordatorio visual de salida si entra en modo presentación
+        // Lanzar recordatorio visual de salida SI entra en modo presentación
         if (state.isPresentationMode) {
-            presAlert.classList.add('visible');
-            setTimeout(() => {
-                presAlert.classList.remove('visible');
-            }, 3500);
+            if (presAlert) {
+                presAlert.style.display = 'block'; // Lo hacemos visible en el DOM
+                presAlert.classList.add('visible');
+                
+                // Limpiamos el temporizador para que no parpadee en móviles
+                setTimeout(() => {
+                    presAlert.classList.remove('visible');
+                    // Opcional: ocultarlo por completo después de la transición de opacidad
+                    setTimeout(() => { 
+                        if(state.isPresentationMode) presAlert.style.display = 'none'; 
+                    }, 500);
+                }, 3500);
+            }
         } else {
-            presAlert.classList.remove('visible');
+            if (presAlert) {
+                presAlert.classList.remove('visible');
+                presAlert.style.display = 'none'; // Lo ocultamos de inmediato
+            }
         }
     }
 
@@ -324,7 +336,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Inicialización inteligente (Verifica si hay paletas compartidas en el enlace)
+   // Inicialización inteligente (Verifica si hay paletas compartidas en el enlace)
+    if (presAlert) presAlert.style.display = 'none'; // <- AGREGA ESTA LÍNEA AQUÍ PARA ASEGURAR EL INICIO EN MÓVIL
+
     const activeShared = checkSharedPalette();
     if (activeShared) {
         renderMain();

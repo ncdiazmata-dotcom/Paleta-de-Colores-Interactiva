@@ -32,13 +32,12 @@ body {
     margin: 0 auto;
     padding: 0 40px;
 }
-
 /* ALERTA DE PRESENTACIÓN DINÁMICA */
 .presentation-alert {
     position: fixed;
     top: 20px;
     left: 50%;
-    transform: translate(-50%, -100px);
+    transform: translate(-50%, -100px); /* Escondido arriba por defecto */
     background: #000000;
     color: #ffffff;
     padding: 16px 32px;
@@ -50,7 +49,17 @@ body {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     pointer-events: none;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    opacity: 0; /* Añadimos esto para que empiece invisible */
+    width: max-content;
+    max-width: 90%;
 }
+
+/* ESTA REGLA HACE QUE SE ACTIVE LA ANIMACIÓN */
+.presentation-alert.visible {
+    transform: translate(-50%, 0); /* Baja a su posición visible */
+    opacity: 1;
+}
+
 .presentation-alert.visible {
     transform: translate(-50%, 0);
 }
@@ -266,16 +275,58 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container { 
+        padding: 0 20px; 
+        display: flex;
+        flex-direction: column;
+        min-height: 90vh; /* Obliga al contenedor a usar casi todo el alto de la pantalla */
+        justify-content: space-between;
+    }
+    
     .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { grid-template-columns: repeat(3, 1fr); }
     .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
     .header-flex { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .controls-panel { justify-content: center; flex-direction: column; align-items: stretch; }
+    
+    /* Modificamos el panel de controles (botones) para decirle que vaya abajo */
+    .controls-panel { 
+        justify-content: center; 
+        flex-direction: column; 
+        align-items: stretch; 
+        order: 2; /* <-- ESTO manda los botones al fondo */
+    }
+    
+    /* Le decimos a la grilla de colores que se posicione primero */
+    .palette-grid { 
+        order: 1; /* <-- ESTO mantiene los colores arriba */
+        min-height: auto; /* Quitamos el mínimo estricto para que no empuje los botones fuera de la pantalla */
+    }
+    
     .selectors-group { justify-content: space-between; }
     .button-actions { justify-content: center; }
 }
-
+ 
 @media (max-width: 480px) {
-    .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { grid-template-columns: repeat(2, 1fr); }
+    .container {
+        padding: 0 10px;
+        height: 95vh; /* Ocupa casi la totalidad de la pantalla del celular */
+    }
+
+    .palette-grid {
+        flex: 1; /* Hace que la grilla ocupe todo el alto disponible restante */
+        gap: 8px !important; /* Reduce la separación entre las tarjetas de colores */
+        margin-bottom: 15px;
+    }
+
+    /* Reducimos el tamaño de las tarjetas individuales para que entren perfectamente */
+    .color-card {
+        padding: 10px !important;
+        font-size: 0.8rem;
+    }
+
+    .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { 
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas compactas */
+    }
+    
     .brand-text h1 { font-size: 1.8rem; }
     .button-actions .btn { width: 100%; justify-content: center; }
 }
