@@ -87,26 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ? '<i class="fa-solid fa-compress"></i> SALIR' 
             : '<i class="fa-solid fa-expand"></i> PRESENTACIÓN';
 
-        // Lanzar recordatorio visual de salida SI entra en modo presentación
+        // Lanzar recordatorio visual de salida si entra en modo presentación
         if (state.isPresentationMode) {
-            if (presAlert) {
-                presAlert.style.display = 'block'; // Lo hacemos visible en el DOM
-                presAlert.classList.add('visible');
-                
-                // Limpiamos el temporizador para que no parpadee en móviles
-                setTimeout(() => {
-                    presAlert.classList.remove('visible');
-                    // Opcional: ocultarlo por completo después de la transición de opacidad
-                    setTimeout(() => { 
-                        if(state.isPresentationMode) presAlert.style.display = 'none'; 
-                    }, 500);
-                }, 3500);
-            }
-        } else {
-            if (presAlert) {
+            presAlert.classList.add('visible');
+            setTimeout(() => {
                 presAlert.classList.remove('visible');
-                presAlert.style.display = 'none'; // Lo ocultamos de inmediato
-            }
+            }, 3500);
+        } else {
+            presAlert.classList.remove('visible');
         }
     }
 
@@ -297,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // SISTEMA AVANZADO DE COMPARTICIÓN COMPLETA
     btnShare.addEventListener('click', () => {
-        // Formatear colores a código plano limpio sin el '#' para construir la URL
         const colorString = state.currentPalette.map(c => hslToHex(c).replace('#', '')).join('-');
         const shareUrl = `${window.location.origin}${window.location.pathname}?p=${colorString}`;
 
@@ -310,7 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => copy('¡COMPARTIDO CON ÉXITO!'))
             .catch(() => copy('ENLACE COPIADO AL PORTAPAPELES'));
         } else {
-            // Fallback si no está en dispositivo móvil o seguro
             copy(shareUrl);
         }
     });
@@ -322,23 +308,34 @@ document.addEventListener('DOMContentLoaded', () => {
         copy('HISTORIAL DE PALETAS ELIMINADO');
     });
 
-    // CAPTURA DE TECLADO MÚLTIPLE (Espacio y Escape)
+    // === CAPTURA DE TECLADO OPTIMIZADA (Espacio y Escape) ===
     window.addEventListener('keydown', (e) => {
+        // Control del modo presentación con Escape
         if (e.key === 'Escape' || e.code === 'Escape') {
             if (state.isPresentationMode) {
                 togglePresentationMode(true);
             }
         }
         
-        if (e.code === 'Space' && ['INPUT', 'SELECT', 'BUTTON'].indexOf(document.activeElement.tagName) === -1) {
+        // Control estricto de la barra espaciadora
+        if (e.key === ' ' || e.code === 'Space') {
+            // Si el usuario está editando un texto o un campo de entrada, no hacemos nada
+            if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                return;
+            }
+            
+            // Prevenimos que la página se desplace hacia abajo
             e.preventDefault();
+            
+            // Quitamos el foco de cualquier botón activo para evitar duplicación de eventos
+            document.activeElement.blur();
+            
+            // Ejecutamos la mutación cromática
             generate(true);
         }
     });
 
-   // Inicialización inteligente (Verifica si hay paletas compartidas en el enlace)
-    if (presAlert) presAlert.style.display = 'none'; // <- AGREGA ESTA LÍNEA AQUÍ PARA ASEGURAR EL INICIO EN MÓVIL
-
+    // Inicialización inteligente (Verifica si hay paletas compartidas en el enlace)
     const activeShared = checkSharedPalette();
     if (activeShared) {
         renderMain();

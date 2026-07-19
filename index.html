@@ -10,22 +10,57 @@
 <body>
 
     <!-- Alerta visual efímera para el modo presentación -->
-   <div id="presentation-alert" class="presentation-alert" style="display: none;">
-    <i class="fa-solid fa-keyboard"></i> Presiona <strong>ESC</strong> en cualquier momento para salir del modo presentación
-   </div>
+    <div id="presentation-alert" class="presentation-alert">
+        <i class="fa-solid fa-keyboard"></i> Presiona <strong>ESC</strong> en cualquier momento para salir del modo presentación
+    </div>
 
-    <header class="app-header">
-        <div class="container header-flex">
-            <div class="brand-text">
-                <h1>COLORFLY <span>STUDIO</span></h1>
-                <p class="brand-subtitle">Visual Systems & Branding</p>
-                <p class="app-description-sub">Generador cromático avanzado para identidades de alto impacto.</p>
+<header class="app-header">
+    <div class="container">
+        <div class="header-flex">
+            <!-- Bloque Izquierdo: Identidad -->
+            <div class="brand-wrapper">
+                <div class="brand-main-row">
+                    <div class="brand-text"><h1>Colorfly<span>Studio</span></h1></div>
+                    <span class="brand-subtitle">v5.0</span>
+                </div>
+                <p class="app-description-sub">Generador de paletas cromáticas para interfaces premium</p>
+            </div>
+            
+            <!-- Bloque Derecho: Filtros/Selectores que rellenan el vacío -->
+            <div class="header-controls">
+                <div class="selectors-group">
+                    <div class="control-item">
+                        <label for="color-count">Muestras</label>
+                        <select id="color-count" class="custom-select">
+                            <option value="6">6 Colores</option>
+                            <option value="8">8 Colores</option>
+                            <option value="9">9 Colores</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label for="palette-mode">Regla</label>
+                        <select id="palette-mode" class="custom-select">
+                            <option value="random">Aleatorio</option>
+                            <option value="monochromatic">Monocromático</option>
+                            <option value="analogous">Análogo</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+<main class="container main-layout">
+        <!-- 1. El contenedor de la paleta principal va primero en el HTML -->
+        <section class="palette-display">
+            <!-- Barra de estado / Instrucciones -->
+            <p id="copy-instruction" class="instruction-text">
+                <span><i class="fa-solid fa-info-circle"></i></span> Clic en la tarjeta para <strong>editar</strong>. Clic en el código para <strong>copiar</strong>. Usa <i class="fa-solid fa-lock"></i> para <strong>bloquear</strong> y <strong>Espacio</strong> para mutar.
+            </p>
+            <div id="palette-grid" class="palette-grid cols-6"></div>
+        </section>
 
-    <main class="container">
-        <!-- Panel de Control -->
+        <!-- 2. El panel de control va segundo, facilitando el cambio de orden en CSS -->
         <section class="controls-panel" aria-label="Controles">
             <div class="selectors-group">
                 <div class="control-item">
@@ -53,17 +88,7 @@
             </div>
         </section>
 
-        <!-- Barra de estado / Instrucciones -->
-        <p id="copy-instruction" class="instruction-text">
-            <span><i class="fa-solid fa-info-circle"></i></span> Clic en la tarjeta para <strong>editar</strong>. Clic en el código para <strong>copiar</strong>. Usa <i class="fa-solid fa-lock"></i> para <strong>bloquear</strong> y <strong>Espacio</strong> para mutar.
-        </p>
-        
-        <!-- Tablero Principal -->
-        <section class="palette-display">
-            <div id="palette-grid" class="palette-grid cols-6"></div>
-        </section>
-
-        <!-- Secciones de Gestión Inferior -->
+        <!-- 3. Galerías de gestión e Historial al final -->
         <div class="gallery-grid">
             <section class="panel-section" aria-label="Guardadas">
                 <div class="panel-header">
