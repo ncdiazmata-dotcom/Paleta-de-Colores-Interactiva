@@ -3,11 +3,11 @@
    ========================================================================== */
 
 :root {
-    --bg-main: #0B0F19;      /* Fondo oscuro profundo, estilo interfaz pro */
-    --bg-card: #151D30;      /* Tarjetas y paneles integrados */
+    --bg-main: #7e98da;      /* Fondo oscuro profundo, estilo interfaz pro */
+    --bg-card: #084ff6;      /* Tarjetas y paneles integrados */
     --bg-input: #1F2942;     /* Selectores y elementos interactivos */
-    --text-main: #F3F4F6;    /* Blanco suave de alta lectura */
-    --text-muted: #9CA3AF;   /* Gris para textos secundarios */
+    --text-main: #dadee7;    /* Blanco suave de alta lectura */
+    --text-muted: #010815;   /* Gris para textos secundarios */
     --accent: #3B82F6;       /* Azul eléctrico para enfoque */
     --accent-hover: #2563EB;
     --radius: 12px;          /* Bordes curvos modernos y estilizados */
@@ -31,9 +31,9 @@ body {
 }
 
 .container {
-    max-width: 1440px;
+    max-width: 1440px,480px,768px,1024px;
     width: 100%;
-    margin: 0 auto;
+    margin-left: 0 auto;
     padding: 0 30px;
 }
 
@@ -65,7 +65,7 @@ body {
    HEADER OPTIMIZADO - EQUILIBRIO VISUAL Y CONTROL INTEGRADO
    ========================================================================== */
 .app-header { 
-    padding: 24px 0 16px 0; 
+    padding: 5px 0 4px 0; 
 }
 
 .header-flex {
@@ -80,7 +80,7 @@ body {
 .brand-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 5px;
 }
 
 .brand-main-row {
@@ -94,6 +94,8 @@ body {
     font-weight: 800; 
     letter-spacing: -0.03em;
     background: linear-gradient(135deg, #F3F4F6 0%, #9CA3AF 100%);
+    background-clip: text;
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -119,18 +121,6 @@ body {
     color: var(--text-muted); 
 }
 
-/* Selectores integrados arriba para rellenar espacio vacío (Lado Derecho) */
-.header-controls {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    background: rgba(21, 29, 48, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    padding: 8px 16px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
 
 .selectors-group { 
     display: flex; 
@@ -184,7 +174,7 @@ body {
 .instruction-text {
     font-size: 0.78rem;
     color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(58, 51, 191, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 6px 14px;
     border-radius: 20px;
@@ -304,7 +294,7 @@ body {
     align-items: center;
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 14px 20px;
+    padding: 18px 22px;
     border-radius: var(--radius);
 }
 
@@ -322,6 +312,7 @@ body {
     align-items: center;
     gap: 8px;
     transition: var(--transition);
+    margin-left: 12px; /* Asegura un margen izquierdo consistente */
 }
 .btn-primary { background: var(--accent); border-color: var(--accent); }
 .btn-primary:hover { background: var(--accent-hover); }
@@ -389,10 +380,10 @@ body {
 
 /* FOOTER FINO */
 .app-footer { margin-top: auto; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75rem; color: var(--text-muted); }
-.footer-content { display: flex; justify-content: space-between; align-items: center; }
-.footer-links a { color: var(--text-muted); margin-left: 14px; font-size: 0.95rem; text-decoration: none; transition: var(--transition); }
-.footer-links a:hover { color: var(--text-main); }
-
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
+.footer-links a { color: var(--text-muted); margin-left: 15px; font-size: 0.95rem; text-decoration: none; transition: var(--transition); }
+.footer-links a:hover { color: var(--text-main) 
+}
 /* ==========================================================================
    SISTEMA DE CORTE RESPONSIVO OPTIMIZADO PARA MÓVILES Y TABLETS
    ========================================================================== */
@@ -506,5 +497,11 @@ body {
     
     .brand-text h1 {
         font-size: 1.35rem;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin:auto
     }
 }
