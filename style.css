@@ -121,7 +121,6 @@ body {
     color: var(--text-muted); 
 }
 
-
 .selectors-group { 
     display: flex; 
     gap: 20px; 
