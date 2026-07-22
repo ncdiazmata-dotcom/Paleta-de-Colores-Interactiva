@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- ESTA ES LA LÍNEA MÁGICA QUE ACTIVA EL DISEÑO MÓVIL -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Colorfly Studio</title>
+    
+    <!-- Carga de Font Awesome v6 para asegurar que todos los iconos funcionen -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,31 +16,33 @@
         <i class="fa-solid fa-keyboard"></i> Presiona <strong>ESC</strong> en cualquier momento para salir del modo presentación
     </div>
 
-<header class="app-header">
-    <div class="container">
-        <div class="header-flex">
-            <!-- Bloque Izquierdo: Identidad -->
-            <div class="brand-wrapper">
-                <div class="brand-main-row">
-                    <div class="brand-text"><h1>Colorfly<span>Studio</span></h1></div>
-                    <span class="brand-subtitle">v5.0</span>
+    <header class="app-header">
+        <div class="container">
+            <div class="header-flex">
+                <!-- Bloque Izquierdo: Identidad -->
+                <div class="brand-wrapper">
+                    <div class="brand-main-row">
+                        <div class="brand-text"><h1>Colorfly<span>Studio</span></h1></div>
+                        <span class="brand-subtitle">v5.0</span>
+                    </div>
+                    <p class="app-description-sub">Generador de paletas cromáticas para interfaces premium</p>
                 </div>
-                <p class="app-description-sub">Generador de paletas cromáticas para interfaces premium</p>
-            
+            </div>
         </div>
-    </div>
-</header>
-<main class="container main-layout">
-        <!-- 1. El contenedor de la paleta principal va primero en el HTML -->
+    </header>
+
+    <main class="container main-layout">
+        <!-- 1. El contenedor de la paleta principal -->
         <section class="palette-display">
-            <!-- Barra de estado / Instrucciones -->
+            <!-- Barra de estado / Instrucciones ajustada para óptima lectura en celular -->
             <p id="copy-instruction" class="instruction-text">
-                <span><i class="fa-solid fa-info-circle"></i></span> Clic en la tarjeta para <strong>editar</strong>. Clic en el código para <strong>copiar</strong>. Usa <i class="fa-solid fa-lock"></i> para <strong>bloquear</strong> y <strong>Espacio</strong> para mutar.
+                <span><i class="fa-solid fa-circle-info"></i></span> 
+                Clic en la tarjeta para <strong>editar</strong>. Clic en el código para <strong>copiar</strong> <i class="fa-solid fa-copy"></i>. Usa <i class="fa-solid fa-lock"></i> para <strong>bloquear</strong> y <strong>Espacio</strong> para mutar.
             </p>
             <div id="palette-grid" class="palette-grid cols-6"></div>
         </section>
 
-        <!-- 2. El panel de control va segundo, facilitando el cambio de orden en CSS -->
+        <!-- 2. Panel de control -->
         <section class="controls-panel" aria-label="Controles">
             <div class="selectors-group">
                 <div class="control-item">
@@ -60,14 +63,14 @@
             </div>
 
             <div class="button-actions">
-                <button id="btn-generate" class="btn btn-primary" title="Espacio"><i class="fa-solid fa-sync"></i> GENERAR</button>
+                <button id="btn-generate" class="btn btn-primary" title="Espacio"><i class="fa-solid fa-rotate"></i> GENERAR</button>
                 <button id="btn-save" class="btn btn-secondary"><i class="fa-solid fa-bookmark"></i> GUARDAR</button>
                 <button id="btn-presentation" class="btn btn-secondary" title="Esc para salir"><i class="fa-solid fa-expand"></i> PRESENTACIÓN</button>
                 <button id="btn-share-native" class="btn btn-secondary"><i class="fa-solid fa-share-nodes"></i> COMPARTIR</button>
             </div>
         </section>
 
-        <!-- 3. Galerías de gestión e Historial al final -->
+        <!-- 3. Galerías de gestión e Historial -->
         <div class="gallery-grid">
             <section class="panel-section" aria-label="Guardadas">
                 <div class="panel-header">
@@ -94,8 +97,8 @@
         <div class="container footer-content">
             <p>&copy; 2026 Colorfly Studio. Desarrollado por Neidy Diaz.</p>
             <div class="footer-links">
-                <a href="mailto:ncdiazmata@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://github.com/ncdiazmata-dotcom" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:ncdiazmata@gmail.com" aria-label="Enviar correo"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://github.com/ncdiazmata-dotcom" target="_blank" aria-label="Perfil de GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
         </div> 
     </footer>

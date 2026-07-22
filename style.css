@@ -3,15 +3,16 @@
    ========================================================================== */
 
 :root {
-    --bg-main: #7e98da;      /* Fondo oscuro profundo, estilo interfaz pro */
-    --bg-card: #084ff6;      /* Tarjetas y paneles integrados */
-    --bg-input: #1F2942;     /* Selectores y elementos interactivos */
-    --text-main: #dadee7;    /* Blanco suave de alta lectura */
-    --text-muted: #010815;   /* Gris para textos secundarios */
-    --accent: #3B82F6;       /* Azul eléctrico para enfoque */
-    --accent-hover: #2563EB;
-    --radius: 12px;          /* Bordes curvos modernos y estilizados */
-    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --bg-main: #120917;       /* Púrpura noche profundo */
+    --bg-card: #1d1126;       /* Violeta carbón contrastante */
+    --bg-input: #2a1938;      /* Elementos interactivos integrados */
+    --text-main: #fbf7ff;     /* Blanco orquídea */
+    --text-muted: #b39ddb;    /* Lavanda tenue */
+    --accent: #f43f5e;        /* Magenta/Coral vibrante */
+    --accent-hover: #e11d48;  /* Rubí radiante */
+    
+    --radius: 14px;
+    --transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 * {
@@ -26,14 +27,14 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 .container {
-    max-width: 1440px,480px,768px,1024px;
+    max-width: 1440px;
     width: 100%;
-    margin-left: 0 auto;
+    margin: 0 auto;
     padding: 0 30px;
 }
 
@@ -56,6 +57,7 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     opacity: 0;
 }
+
 .presentation-alert.visible {
     transform: translate(-50%, 0);
     opacity: 1;
@@ -65,13 +67,13 @@ body {
    HEADER OPTIMIZADO - EQUILIBRIO VISUAL Y CONTROL INTEGRADO
    ========================================================================== */
 .app-header { 
-    padding: 5px 0 4px 0; 
+    padding: 15px 0 10px 0; 
 }
 
 .header-flex {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Alinea verticalmente el logo y los selectores */
+    align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 20px;
 }
@@ -111,8 +113,8 @@ body {
     color: var(--accent); 
     font-weight: 700; 
     padding: 2px 8px;
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.2);
     border-radius: 4px;
 }
 
@@ -155,7 +157,7 @@ body {
 
 .custom-select:hover { 
     border-color: rgba(255, 255, 255, 0.25); 
-    background: rgba(31, 41, 66, 0.8);
+    background: rgba(42, 25, 56, 0.8);
 }
 
 /* ==========================================================================
@@ -173,7 +175,7 @@ body {
 .instruction-text {
     font-size: 0.78rem;
     color: var(--text-muted);
-    background: rgba(58, 51, 191, 0.03);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 6px 14px;
     border-radius: 20px;
@@ -188,11 +190,13 @@ body {
 .palette-display {
     width: 100%;
 }
+
 .palette-grid {
     display: grid;
     gap: 8px; 
-    height: 380px; /* Altura ideal en ordenadores */
+    height: 380px;
 }
+
 .palette-grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
 .palette-grid.cols-8 { grid-template-columns: repeat(8, 1fr); }
 .palette-grid.cols-9 { grid-template-columns: repeat(9, 1fr); }
@@ -209,6 +213,7 @@ body {
     transition: var(--transition);
     overflow: hidden;
 }
+
 .color-card:hover {
     transform: translateY(-2px);
     z-index: 5;
@@ -221,38 +226,43 @@ body {
     top: 0; left: 0; right: 0; bottom: 70px;
     cursor: pointer;
 }
+
 .manual-color-input {
     position: absolute;
     width: 100%; height: 100%;
     opacity: 0; cursor: pointer;
 }
+
 .picker-hint {
     position: absolute;
     top: 12px; right: 12px;
     font-size: 0.95rem; opacity: 0;
     transition: var(--transition);
 }
+
 .color-card:hover .picker-hint { opacity: 0.7; }
 
 .color-info { 
     margin-bottom: 10px; 
     z-index: 2; 
 }
+
 .color-value {
     font-family: "SFMono-Regular", Consolas, Menlo, monospace;
     font-size: 0.85rem; 
     font-weight: 700;
     cursor: pointer;
     padding: 4px 10px;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 6px;
     display: inline-block;
     transition: var(--transition);
 }
-.color-value:hover { background: rgba(0,0,0,0.3); }
+
+.color-value:hover { background: rgba(0,0,0,0.4); }
 
 .card-actions { 
     display: flex; 
@@ -261,6 +271,7 @@ body {
     transition: var(--transition); 
     z-index: 2; 
 }
+
 .color-card:hover .card-actions, 
 .color-card.locked .card-actions { 
     opacity: 1; 
@@ -277,19 +288,21 @@ body {
     font-size: 0.8rem;
     transition: var(--transition);
 }
+
 .card-action-btn:hover { 
     background: rgba(255,255,255,0.2);
 }
+
 .color-card.locked { 
     border: 2px solid rgba(255, 255, 255, 0.6); 
 }
 
 /* ==========================================================================
-   DOCK DE ACCIONES INFERIOR REESTRUCTURADO (Solo botones de acción)
+   DOCK DE ACCIONES INFERIOR REESTRUCTURADO
    ========================================================================== */
 .controls-panel {
     display: flex;
-    justify-content: center; /* Centra los botones de acción para un look más limpio */
+    justify-content: center;
     align-items: center;
     background: var(--bg-card);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -297,7 +310,11 @@ body {
     border-radius: var(--radius);
 }
 
-.button-actions { display: flex; gap: 12px; }
+.button-actions { 
+    display: flex; 
+    gap: 12px; 
+}
+
 .btn {
     padding: 10px 20px;
     font-size: 0.8rem;
@@ -313,6 +330,7 @@ body {
     transition: var(--transition);
     margin-left: 12px; /* Asegura un margen izquierdo consistente */
 }
+
 .btn-primary { background: var(--accent); border-color: var(--accent); }
 .btn-primary:hover { background: var(--accent-hover); }
 .btn-secondary:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
@@ -323,12 +341,14 @@ body {
     grid-template-columns: 1fr 1fr; 
     gap: 16px; 
 }
+
 .panel-section { 
     background: var(--bg-card); 
     border: 1px solid rgba(255, 255, 255, 0.04); 
     padding: 16px; 
     border-radius: var(--radius); 
 }
+
 .panel-header { 
     display: flex; 
     justify-content: space-between; 
@@ -337,6 +357,7 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.06); 
     padding-bottom: 6px;
 }
+
 .panel-section h2 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; color: var(--text-muted); }
 
 .btn-clear {
@@ -381,20 +402,20 @@ body {
 .app-footer { margin-top: auto; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75rem; color: var(--text-muted); }
 .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; } 
 .footer-links a { color: var(--text-muted); margin-left: 15px; font-size: 0.95rem; text-decoration: none; transition: var(--transition); }
-.footer-links a:hover { color: var(--text-main) 
-}
+.footer-links a:hover { color: var(--text-main); }
+
 /* ==========================================================================
-   SISTEMA DE CORTE RESPONSIVO OPTIMIZADO PARA MÓVILES Y TABLETS
+   SISTEMA RESPONSIVO Y CORTE PARA MÓVILES/TABLETS
    ========================================================================== */
 
-/* 💻 TABLETS Y MONITORES MEDIANOS (PANTALLAS EN TORNO A 1024px) */
+/* 💻 TABLETS Y MONITORES MEDIANOS (<= 1024px) */
 @media (max-width: 1024px) {
     .container { padding: 0 20px; }
     .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { grid-template-columns: repeat(4, 1fr); }
     .palette-grid { height: 420px; }
 }
 
-/* 📱 TABLETS VERTICALES (PANTALLAS MENORES A 768px) */
+/* 📱 TABLETS VERTICALES (<= 768px) */
 @media (max-width: 768px) {
     .header-flex { 
         flex-direction: column; 
@@ -418,22 +439,9 @@ body {
         flex-direction: column; 
     }
     
-    /* La grilla cromática se posiciona arriba */
-    .palette-display { 
-        order: 1; 
-    }
-    
-    /* La caja de botones baja por completo */
-    .controls-panel { 
-        order: 2; 
-        padding: 16px; 
-    }
-    
-    .gallery-grid { 
-        order: 3; 
-        grid-template-columns: 1fr; 
-        gap: 16px; 
-    }
+    .palette-display { order: 1; }
+    .controls-panel { order: 2; padding: 16px; }
+    .gallery-grid { order: 3; grid-template-columns: 1fr; gap: 16px; }
     
     .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { 
         grid-template-columns: repeat(3, 1fr); 
@@ -444,12 +452,10 @@ body {
         width: 100%; 
     }
     
-    .palette-grid { 
-        height: 380px; 
-    }
+    .palette-grid { height: 380px; }
 }
- 
-/* 📲 MÓVILES Y TELÉFONOS INTELIGENTES (PANTALLAS MENORES A 480px) */
+
+/* 📲 MÓVILES (<= 480px) */
 @media (max-width: 480px) {
     .container { padding: 0 16px; }
     
@@ -458,9 +464,7 @@ body {
         height: 320px; 
     }
     
-    .color-card { 
-        padding: 10px !important; 
-    }
+    .color-card { padding: 10px !important; }
     
     .palette-grid.cols-6, .palette-grid.cols-8, .palette-grid.cols-9 { 
         grid-template-columns: repeat(2, 1fr); 
@@ -469,7 +473,7 @@ body {
     /* Botones apilados verticalmente en celular para mejor interacción táctil */
     .button-actions { 
         flex-direction: column; 
-        gap: 6px; 
+        gap: 8px; 
         width: 100%;
     }
     
@@ -490,13 +494,10 @@ body {
         width: 100%;
     }
     
-    .custom-select {
-        width: 55%; 
-    }
+    .custom-select { width: 55%; }
     
-    .brand-text h1 {
-        font-size: 1.35rem;
-    }
+    .brand-text h1 { font-size: 1.35rem; }
+    
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -504,3 +505,6 @@ body {
         margin:auto
     }
 }
+
+
+
